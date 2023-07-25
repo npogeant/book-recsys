@@ -20,15 +20,11 @@
 	"customizations": {
 		"vscode": {
 			"settings": {
-				"python.defaultInterpreterPath": "/opt/conda/envs/demo"
+				"python.defaultInterpreterPath": "/opt/conda/envs/book-recsys"
 			},
 			"extensions": [
 				"ms-python.python",
-				"donjayamanne.python-extension-pack",
-				"ms-toolsai.jupyter",
-				"GitHub.codespaces",
-				"ms-azuretools.vscode-docker",
-				"DavidAnson.vscode-markdownlint"
+				"ms-toolsai.jupyter"
 			]
 		}
 	}
