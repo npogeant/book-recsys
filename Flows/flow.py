@@ -8,7 +8,7 @@ Kaggle: https://www.kaggle.com/datasets/arashnic/book-recommendation-dataset
 
 """
 
-from metaflow import FlowSpec, step, S3, Parameter, current
+from metaflow import FlowSpec, step, S3, Parameter, current, conda_base
 import time
 from collections import defaultdict
 
@@ -26,6 +26,8 @@ class BookRecSysFlow(FlowSpec):
         print("username: %s" % current.username)
         print("datastore is: %s" % DATASTORE_SYSROOT_S3)
         self.next(self.prepare_dataset)
+        
+        
 
     def filter_dataset(self, dataset, min_book_ratings=20, min_user_ratings=20):
         """
@@ -80,9 +82,9 @@ class BookRecSysFlow(FlowSpec):
         from surprise import BaselineOnly, KNNBasic, NMF, SVD
 
         # Read and load the books, users, and ratings data
-        books = pd.read_csv('./Data/Books.csv', delimiter = ",", usecols = [0,1,2,3,4], on_bad_lines='skip')
-        users = pd.read_csv('./Data/Users.csv')
-        ratings = pd.read_csv('./Data/Ratings.csv')
+        books = pd.read_csv('../Data/Books.csv', delimiter = ",", usecols = [0,1,2,3,4], on_bad_lines='skip')
+        users = pd.read_csv('../Data/Users.csv')
+        ratings = pd.read_csv('../Data/Ratings.csv')
 
         self.books = books
         self.users = users
